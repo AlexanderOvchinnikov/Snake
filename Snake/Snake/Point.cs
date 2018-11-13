@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snake
+namespace Snake 
 {
     class Point
     {
@@ -62,5 +62,11 @@ namespace Snake
             Draw();
         }
 
+        internal bool isHit(Point p)
+        {
+            if (p.x == x && p.y == y)
+                return true;
+            else return false;
+        }
     }
 }

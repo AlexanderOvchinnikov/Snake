@@ -10,6 +10,7 @@ namespace Snake
     {
         Direction direction;
 
+
         public Snake(Point tail, int lenght, Direction _direction)
         {
             direction = _direction;
@@ -39,6 +40,18 @@ namespace Snake
             Point nextPoint = new Point(head);
             nextPoint.Move(1, direction);
             return nextPoint;
+        }
+
+        public bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.isHit(food))
+            {
+                food.sym = head.sym;
+                pList.Add(food);
+                return true;
+            }
+            else return false;
         }
 
         public void HandleKey(ConsoleKey key)
