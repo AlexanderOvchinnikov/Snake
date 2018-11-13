@@ -21,8 +21,13 @@ namespace Snake
             Hline.DrawF();
             Vline2.DrawF();
 
+            Point p = new Point(4, 5, '*');
+            Snake snake = new Snake(p, 4, Direction.Right);
+            snake.DrawF();
+
 
             Console.ReadLine();
+
 
         }
 
