@@ -68,5 +68,11 @@ namespace Snake
                 return true;
             else return false;
         }
+        //internal bool isHit2(Point p)
+        //{
+        //    if ((p.x+1) == x && p.y == y || (p.x-1) == x && p.y == y || (p.x) == x && (p.y + 1) == y)
+        //        return true;
+        //    else return false;
+        //}
     }
 }

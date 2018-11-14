@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class FoodCreator 
+    class FoodCreator : Figure
     {
         int mapWeight, mapHeight;
         char sym;
@@ -22,10 +22,24 @@ namespace Snake
 
         public Point CreateFood()
         {
-            int x = random.Next(2, mapWeight - 2);
-            int y = random.Next(2, mapHeight - 2);
-            return new Point(x, y, sym);
+            do
+            {
+                int x = random.Next(2, mapWeight - 2);
+                int y = random.Next(2, mapHeight - 2);
+                return new Point(x, y, sym);
+            }
+            while (FoodUnCorrect(CreateFood()));
 
+        }
+
+        internal bool FoodUnCorrect(Point food)
+        {
+            for (int i = 0; i < pList.Count ; i++)
+            {
+                if (food.isHit(pList[i])) return true;
+                
+            }
+            return false;
         }
         
          

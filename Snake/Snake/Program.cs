@@ -11,30 +11,36 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-
-            Console.SetWindowSize(80, 25);            
-            HorizontalLine Hline = new HorizontalLine(0, 79, 1, '+');
-            HorizontalLine Hline2 = new HorizontalLine(1, 79, 24, '+');
-            VerticalLine Vline = new VerticalLine(0, 1, 24, '+');
-            VerticalLine Vline2 = new VerticalLine(79, 1, 24, '+');
-            Vline.DrawF();
-            Hline2.DrawF();
-            Hline.DrawF();
-            Vline2.DrawF();
+            Walls walls = new Walls(79, 79);
+            walls.Draw();
+            int count = 0;
 
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.Right);
             snake.DrawF();
+
             FoodCreator foodCreator = new FoodCreator(70, 20, '$');
             Point food = foodCreator.CreateFood();
             food.Draw();
             
             while (true)
             {
-                if (snake.Eat(food))
+                if (walls.IsHit(snake) || snake.IsHitTail())
                 {
+                    Console.Clear();
+                    Console.WriteLine("Конец");
+                    Console.WriteLine("Вы съели "+ count + " знаков");
+                    Console.ReadLine();
+                    break;
+                }
+                if (snake.Eat(food) )
+                {
+                    count = count+1;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     food = foodCreator.CreateFood();
                     food.Draw();
+                    
+                    
                     
                 }
                 else
@@ -48,8 +54,7 @@ namespace Snake
                     snake.HandleKey(key.Key);
                 }
 
-                Thread.Sleep(300);
-                snake.Move();
+                Thread.Sleep(400);
             }
 
 
