@@ -12,7 +12,7 @@ namespace Snake
         static void Main(string[] args)
         {
 
-            Console.SetBufferSize(80, 80);            
+            Console.SetWindowSize(80, 25);            
             HorizontalLine Hline = new HorizontalLine(0, 79, 1, '+');
             HorizontalLine Hline2 = new HorizontalLine(1, 79, 24, '+');
             VerticalLine Vline = new VerticalLine(0, 1, 24, '+');
@@ -25,7 +25,7 @@ namespace Snake
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.Right);
             snake.DrawF();
-            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
+            FoodCreator foodCreator = new FoodCreator(70, 20, '$');
             Point food = foodCreator.CreateFood();
             food.Draw();
             

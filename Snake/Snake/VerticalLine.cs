@@ -19,5 +19,11 @@ namespace Snake
             }
         }
 
+        public override void DrawF()
+        {
+            Console.ForegroundColor = ConsoleColor.Red; 
+            base.DrawF();
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
