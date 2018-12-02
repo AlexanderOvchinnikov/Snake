@@ -11,7 +11,9 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Walls walls = new Walls(79, 79);
+            Console.SetWindowSize(80, 24);
+
+            Walls walls = new Walls(79, 23);
             walls.Draw();
             int count = 0;
 
@@ -36,12 +38,10 @@ namespace Snake
                 if (snake.Eat(food) )
                 {
                     count = count+1;
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     food = foodCreator.CreateFood();
                     food.Draw();
-                    
-                    
-                    
+   
                 }
                 else
                 {
@@ -54,7 +54,7 @@ namespace Snake
                     snake.HandleKey(key.Key);
                 }
 
-                Thread.Sleep(400);
+                Thread.Sleep(100);
             }
 
 
